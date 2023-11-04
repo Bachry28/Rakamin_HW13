@@ -52,8 +52,11 @@ const Navbar = () => {
           </Text>
         </Flex>
       </Link>
+      
+      <Text fontSize="2xl" >
+       {isLogin ? '' : 'Welcome Reader Eagernerss'}
+      </Text>
 
-      <Text fontSize="3xl" >Reader Eagernerss</Text>
 
       <HStack>
         {isLogin && (

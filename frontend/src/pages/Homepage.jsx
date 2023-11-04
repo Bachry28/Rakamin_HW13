@@ -1,15 +1,15 @@
-import { VStack, Box, Text } from "@chakra-ui/react";
+import { VStack, Box, Text, Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Books from "../components/Books";
 import { getAllBooks } from "../modules/fetch";
- 
 
 export default function Homepage() {
   const [books, setBooks] = useState([]);
+
   useEffect(() => {
     const fetchBooks = async () => {
-      const books = await getAllBooks();
-      setBooks(books);
+      const data = await getAllBooks();
+      setBooks(data?.books || []); // Ensure data is available and use the correct property
     };
     fetchBooks();
   }, []);
@@ -23,13 +23,17 @@ export default function Homepage() {
         borderRadius="md"
         textAlign="center"
       >
-        <Text fontSize="xxl">
+        <Text fontSize="l"> 
           "Ilmu pengetahuan tanpa agama lumpuh, agama tanpa ilmu pengetahuan buta." - Albert Einstein
         </Text>
       </Box>
-      {books?.books?.map((book) => (
-        <Books key={`${book.id} ${book.title}`} {...book} />
-      ))}
+      
+      <text as= 'u' fontSize="xl" fontWeight="bold">List Of Library</text>
+      <Flex flexWrap="wrap" justify="space-around">
+        {books.map((book) => ( // Use the 'books' array directly
+          <Books key={book.id} {...book} />
+        ))}
+      </Flex>
     </VStack>
   );
 }
