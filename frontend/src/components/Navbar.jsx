@@ -41,17 +41,20 @@ const Navbar = () => {
       align="center"
       justify="space-between"
       wrap="wrap"
-      padding="1rem"
-      bg="teal.500"
+      padding="0.5rem"
+      bgGradient='linear(to-r, red.500, blue.400, red.500)'
       color="white"
     >
       <Link to="/">
         <Flex align="center" mr={5} cursor="pointer">
           <Text fontSize="xl" fontWeight="bold">
-            My Website
+            Home
           </Text>
         </Flex>
       </Link>
+
+      <Text fontSize="3xl" >Reader Eagernerss</Text>
+
       <HStack>
         {isLogin && (
           <Link to="/newbook">
